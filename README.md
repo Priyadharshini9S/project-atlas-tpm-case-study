@@ -58,21 +58,6 @@ Rather than blindly delaying the launch or making false promises regarding the 8
 * Technical & Architectural Analysis: [technical/system_design.md](technical/system_design.md)
 * Agile Process & Cadence Design: [documents/process_cadence.md](documents/process_cadence.md)
 
-# Risk & Dependency Register
-
-Ranked by combined likelihood and impact. Reviewed weekly by cross-functional stakeholders.
-
-| # | Risk / Dependency | Likelihood & Impact | Early Signal / Metric to Watch | Mitigation / Plan B | Owner |
-| :-: | :--- | :---: | :--- | :--- | :--- |
-| **1** | Payment partner pricing flag slips past Week 5. | **Med / High** | No written ETA or status reply from partner by end of W2. | Escalate to relationship owner at W2. Pre-build a fallback manual/flat residual charge path for launch day to bypass vendor dependency. | TPM + Payments Lead |
-| **2** | Billing's 1-engineer leave (W5-W6) collides with the complex Invoicing build. | **High / High** | Invoicing design/spec isn't fully locked by end of Week 4. | Front-load design reviews into W3-W4 before the engineer leaves so W5-W6 is pure execution. Scope code to MVP reconciliation only. | TPM + Billing Lead |
-| **3** | DB migration overruns past Week 3, further delaying metering ingestion. | **Med / High** | Migration status check-in at end of W2 reveals progress is <80%. | Secure a hard cutover commitment in W1. If it slips, pull an engineer off migration support to protect the metering deadline. | TPM + Platform Lead |
-| **4** | Tax sign-off incomplete or delayed across 190+ countries. | **Med / High** | Tax compliance team hasn't produced a scoped country list/risk tiering by end of W2. | Narrow initial launch to countries covered by existing Merchant of Record (MoR) rules. Sequence rest as post-launch fast-follows. | TPM + Tax Lead |
-| **5** | Metering/wallet integration surfaces bugs late (double-counting, dropped events). | **Med / Med-High** | Reconciliation discrepancies appear during W4 integration tests. | Build an automated reconciliation/audit report into metering from day one so mismatches are visible in W4 instead of deep in W6 invoicing. | Platform Lead |
-| **6** | Northwind's integration lags because Dodo docs/SDK arrive too late. | **Med / Med** | Northwind has not kicked off their integration sprint by Week 5. | Ship a docs/SDK "preview" by end of W2 based on the frozen contract schema, allowing parallel client integration. | DevRel Lead |
-| **7** | Unclear ownership at the metering/wallet handoff between Platform and Billing. | **Med / Med** | Conflicting assumptions surface in standups regarding deduplication/depletion logic ownership. | Author and sign-off on a one-page interface contract (event schema, dedupe ownership, depletion triggers) in Week 1. | TPM |
-
-
 
 # Technical Fluency & Architecture Breakdown
 
