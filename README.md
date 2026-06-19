@@ -57,28 +57,3 @@ Rather than blindly delaying the launch or making false promises regarding the 8
 * Detailed Risk Register: [documents/risk_register.md](documents/risk_register.md)
 * Technical & Architectural Analysis: [technical/system_design.md](technical/system_design.md)
 * Agile Process & Cadence Design: [documents/process_cadence.md](documents/process_cadence.md)
-
-
-# TPM Operating Cadence & Process Improvement Strategy
-
-## 📉 Diagnosing Process Pitfalls: The Cost of "Invisible Risks"
-In complex systems, risks often develop silently over weeks before turning into combined delivery crises. If a risk is only called out when a milestone officially slips, the team loses the valuable time buffer where mitigations are cheap to implement.
-
-## 🛠️ The Proposed Change: Asynchronous Telemetry
-To maximize engineering velocity and remove status-meeting overhead, the following operational structure is established:
-
-### Operational Rituals to Maintain:
-* **Async Daily Standup:** 2-3 bullet lines per engineer via slack/tooling. No disruptive live calls.
-* **Targeted Cross-Team Syncs:** A 30-minute live working session held *only* between specific teams whose technical dependencies are due that week.
-* **Standing External Dependency Audits:** A dedicated, weekly verification check for external vendors (Partner flags, Tax). Logging "No Update" two weeks in a row acts as an automatic trigger for high-level management escalation.
-
-### Rituals to Eliminate:
-* 🚫 Cross-functional full-room status reporting syncs (reading out text line-by-line that is already written).
-* 🚫 Process reviews and retrospectives scheduled during critical crunch/delivery weeks.
-
-## 📈 Metric of Success
-We evaluate the performance of this operational shift by tracking the **Callout Lag**. This measures the duration of time between when an issue began trending towards "Amber" in retrospect and when it was openly communicated. Success is defined as this lag trending down to zero over a four-week period.
-
-* Detailed Risk Register: [documents/risk_register.md](documents/risk_register.md)
-* Technical & Architectural Analysis: [technical/system_design.md](technical/system_design.md)
-* Agile Process & Cadence Design: [documents/process_cadence.md](documents/process_cadence.md)
