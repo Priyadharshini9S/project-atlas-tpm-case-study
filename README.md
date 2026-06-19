@@ -59,25 +59,6 @@ Rather than blindly delaying the launch or making false promises regarding the 8
 * Agile Process & Cadence Design: [documents/process_cadence.md](documents/process_cadence.md)
 
 
-# Technical Fluency & Architecture Breakdown
-
-### 1. Idempotency & Unique Event Identifiers
-* **Why do we require a client-generated `event_id`?** It allows the ingestion engine to distinguish between an intentional separate charge and a duplicate network retry. Without it, network retries will result in over-billing, incorrectly depleting the customer's wallet balance.
-* **Is a retry safe?** Yes, but *only* if the endpoint checks whether the unique `event_id` has already been processed before mutating balances. If the event exists, it drops the duplicate and returns a cached success response.
-
-### 2. Distributed Webhook Mechanics
-* **Why do at-least-once webhooks duplicate events?** In a distributed system, network unreliability prevents the sender from knowing whether a payload failed to arrive, or if it arrived successfully but the acknowledgment dropped. To avoid missing critical alerts (e.g., low-balance webhooks), the system defaults to retrying delivery. Handlers must be engineered to be completely idempotent (e.g., executing `SET status = 'low'` instead of a stateful step like `wallet_balance -= 10`).
-* **Debugging Webhook Delivery Failures (First 3 Triages):**
-  1. **Source Validation:** Check our delivery logs to ensure the event infrastructure successfully triggered when the threshold was crossed.
-  2. **Ingress Evaluation:** Review the exact HTTP response codes returned by the receiver's endpoint (e.g., 504 Timeouts, 403 TLS handshake errors, 400 Bad Requests).
-  3. **Network & Security Layer Verification:** Inspect intermediate firewalls, IP blocklists, malformed target URLs, or silent signature authentication failures.
-
-### 3. Merchant of Record (MoR) Model
-When Dodo acts as the **Merchant of Record (MoR)**, it assumes full financial, regulatory, and legal liability for selling to the end consumer. 
-* This means computing local sales taxes, managing cross-border processing laws, and managing compliance remittance across all 190+ markets is entirely Dodo's responsibility, not Northwind's. 
-* A failure to launch accurate localization metrics directly exposes Dodo to significant auditing and compliance risk.
-
-
 # TPM Operating Cadence & Process Improvement Strategy
 
 ## 📉 Diagnosing Process Pitfalls: The Cost of "Invisible Risks"
